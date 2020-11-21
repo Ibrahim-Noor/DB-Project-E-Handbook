@@ -10,4 +10,4 @@ to this
 if version < (1, 4, 0):
 	pass
   
-and then run again, your issue would be solved.
+and then run again, your issue should be solved by now.
