@@ -1,0 +1,99 @@
+{% extends 'student/base.html' %}
+{% block content %}
+    <div style="margin-top: 50px">
+        <p>Total Credit Hours taken: {{creditHoursInfo.total_credithours_taken}}</p>
+        <p>Required Credit Hours for the degree: {{creditHoursInfo.req_ch}}</p>
+        <p>Credit Hours left: {{creditHoursInfo.req_ch|add:creditHoursInfo.total_credithours_taken}}</p>
+        <br>
+        <br>
+        <p>Credit Hours Taken from Major: {{creditHoursInfo.major_courses_ch}}</p>
+        <p>Credit Hours Taken from Free Electives/Outgroups: {{creditHoursInfo.nonmajor_courses_ch}}</p>
+        <br>
+        <br><br>
+        <p>You must take the following courses in order to graduate on time: {{creditHoursInfo.grad_year}} </p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Major</th>
+                    <th>Credit Hours</th>
+                    <th>School</th>
+                    <th>Semester</th>
+                    <th>Year</th>
+                    <th>PreRequisites met or not</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in majorCoreNotTakenCourses %}
+                    <tr>
+                        <td>{{course.course_name}}</td>
+                        <td>{{course.major_name}}</td>
+                        <td>{{course.credit_hours}}</td>
+                        <td>{{course.school}}</td>
+                        <td>{{course.semester}}</td>
+                        <td>{{course.year}}</td>
+                        <td>{{course.prereqs_met}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <p>You can take these Courses from your Major as free Elective from this list</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Major</th>
+                    <th>Credit Hours</th>
+                    <th>School</th>
+                    <th>Semester</th>
+                    <th>Year</th>
+                    <th>PreRequisites met or not</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in majorNotTakenCourses %}
+                    <tr>
+                        <td>{{course.course_name}}</td>
+                        <td>{{course.major_name}}</td>
+                        <td>{{course.credit_hours}}</td>
+                        <td>{{course.school}}</td>
+                        <td>{{course.semester}}</td>
+                        <td>{{course.year}}</td>
+                        <td>{{course.prereqs_met}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <p>You can take the rest of your Free Electives/OutGroups Courses from this list</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Major</th>
+                    <th>Credit Hours</th>
+                    <th>School</th>
+                    <th>Semester</th>
+                    <th>Year</th>
+                    <th>PreRequisites met or not</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in nonMajorNotTakenCourses %}
+                    <tr>
+                        <td>{{course.course_name}}</td>
+                        <td>{{course.major_name}}</td>
+                        <td>{{course.credit_hours}}</td>
+                        <td>{{course.school}}</td>
+                        <td>{{course.semester}}</td>
+                        <td>{{course.year}}</td>
+                        <td>{{course.prereqs_met}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

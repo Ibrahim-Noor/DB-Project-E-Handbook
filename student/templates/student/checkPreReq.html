@@ -1,0 +1,22 @@
+{% extends "student/base.html" %}
+
+{% block content %}
+    <form method="POST" action = "">
+    {% csrf_token %}
+        <label for="courseSelect">Choose course</label>
+        <select type="text" id="courseSelect" name="course">
+            {% for course in allCourses %}
+                <option value="{{course.course_id}}">{{course.name}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <input type="submit" value="Check Prereqs!"/>
+    </form>
+    {% if preReqs %}
+        <br><br><br>
+        <p>The Prerequisite of {{preReqs.0.name}} is: {{preReqs.1.name}}</p>
+    {% else %}
+        <div></div>
+    {% endif %}
+    
+{% endblock content %}

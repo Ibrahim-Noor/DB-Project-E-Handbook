@@ -1,0 +1,12 @@
+{% extends "student/base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'student/mainPage.css' %}">
+{% block content %}
+    <ul>
+        <li><a href="{% url 'coursesTaken' %}">Your Courses</a></li>
+        <li><a href="{% url 'coursesRequired' %}">Required Courses</a></li>
+        <li><a href="{% url 'checkPreReq' %}">Check Pre-Requisites for a course</a></li>
+        <li><a href="">dsa</a></li>
+        <li><a href="">dasad</a></li>
+    </ul>
+{% endblock content %}
