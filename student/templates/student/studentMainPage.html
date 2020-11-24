@@ -1,0 +1,20 @@
+{% extends "student/base.html" %}
+{% load static %}
+{% comment %} <link rel="stylesheet" href="{% static 'student/mainPage.css' %}"> {% endcomment %}
+
+
+
+{% block content %}
+    <ul class="mainPageList" style="list-style:none;">
+        <li><a href="{% url 'coursesTaken' %}">Your Courses</a></li>
+        <li><a href="{% url 'coursesRequired' %}">Required Courses</a></li>
+        <li><a href="{% url 'checkPreReq' %}">Check Pre-Requisites for a course</a></li>
+        <li><a href="{% url 'checkAntiReq' %}">Check Anti-Requisites for a course</a></li>
+        <li><a href="{% url 'checkCoursesInASemester' %}">See courses offered in a particular semester</a></li>
+        <li><a href="{% url 'checkAdvisor' %}">Check Your advisor</a></li>
+        <li><a href="{% url 'viewCoursesByInstructor' %}">View Courses By Instructor</a></li>
+        <li><a href="{% url 'viewInstructorsRatings' %}">View Ratings of Instructors</a></li>
+        <li><a href="{% url 'viewCoursesMajorWise' %}">View Courses of a Major</a></li>
+        <li><a href="{% url 'viewAllInstructors' %}">View All Instructors</a></li>
+    </ul>
+{% endblock content %}

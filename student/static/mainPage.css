@@ -1,3 +1,9 @@
 li {
     text-decoration: none;
+    margin: auto;
+}
+
+
+.mainPageList{
+    list-style-type: none;
 }

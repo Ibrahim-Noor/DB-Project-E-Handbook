@@ -14,7 +14,10 @@
     </form>
     {% if preReqs %}
         <br><br><br>
-        <p>The Prerequisite of {{preReqs.0.name}} is: {{preReqs.1.name}}</p>
+        <p>The Prerequisite(s) of {{queryCourse.name}} is/are:</p>
+        {% for course in preReqs %}
+            <p>{{course.name}}</p>
+        {% endfor %}
     {% else %}
         <div></div>
     {% endif %}

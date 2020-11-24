@@ -1,9 +1,10 @@
 {% extends 'student/base.html' %}
+{% load customFilters %}
 {% block content %}
     <div style="margin-top: 50px">
         <p>Total Credit Hours taken: {{creditHoursInfo.total_credithours_taken}}</p>
         <p>Required Credit Hours for the degree: {{creditHoursInfo.req_ch}}</p>
-        <p>Credit Hours left: {{creditHoursInfo.req_ch|add:creditHoursInfo.total_credithours_taken}}</p>
+        <p>Credit Hours left: {{creditHoursInfo.req_ch|sub:creditHoursInfo.total_credithours_taken}}</p>
         <br>
         <br>
         <p>Credit Hours Taken from Major: {{creditHoursInfo.major_courses_ch}}</p>

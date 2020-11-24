@@ -1,0 +1,27 @@
+{% extends 'student/base.html' %}
+{% block content %}
+    <div style="margin-top: 50px">
+        {% if advisor %}
+            <p>Your advisor is: </p>
+            <br>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Advisor Name</th>
+                        <th>Advisor Department</th>
+                        <th>School</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{advisor.0.name}}</td>
+                        <td>{{advisor.0.department}}</td>
+                        <td>{{advisor.0.school}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        {% else %}
+            <div style="margin:auto;">You have not been alloted an advisor yet.</div>
+        {% endif %}
+    </div>
+{% endblock content %}

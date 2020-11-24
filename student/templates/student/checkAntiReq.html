@@ -1,0 +1,25 @@
+{% extends "student/base.html" %}
+
+{% block content %}
+    <form method="POST" action = "">
+    {% csrf_token %}
+        <label for="courseSelect">Choose course</label>
+        <select type="text" id="courseSelect" name="course">
+            {% for course in allCourses %}
+                <option value="{{course.course_id}}">{{course.name}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <input type="submit" value="Check Antireqs!"/>
+    </form>
+    {% if antiReqs %}
+        <br><br><br>
+        <p>The Antirequisite(s) of {{queryCourse.name}} is/are:</p>
+        {% for course in antiReqs %}
+            <p>{{course.name}}</p>
+        {% endfor %}
+    {% else %}
+        <div></div>
+    {% endif %}
+    
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends "index/base.html" %}
+{% block content %}
+    <div class="card text-center">
+        <div class="card-header">
+            Admin Login
+        </div>
+        <div class="card-body">
+            {{error}}
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        {% comment %} <div class="card-footer text-muted">
+            2 days ago
+        </div> {% endcomment %}
+    </div>
+{% endblock content %}

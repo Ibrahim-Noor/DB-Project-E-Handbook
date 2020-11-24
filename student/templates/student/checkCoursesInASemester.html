@@ -1,0 +1,50 @@
+{% extends 'student/base.html' %}
+{% block content %}
+    <div style="margin-top: 50px">
+        <form method="POST" action = "">
+        {% csrf_token %}
+            <label for="term">Choose semester Term</label>
+            <select type="text" id="term" name="semesterTerm">
+                <option value="fall">Fall</option>
+                <option value="summer">Summer</option>
+                <option value="spring">Spring</option>
+            </select>
+            <br>
+            <label for="year">Choose semester Term</label>
+            <select type="text" id="year" name="semesterYear">
+                {% for i in yearList %}
+                    <option value="{{i}}">{{i}}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <input type="submit" value="Show Courses!"/>
+        </form>
+        <br><br>
+        {% if coursesOffered %}
+            <p>Courses offered in {{semesterTerm.0}}, {{semesterTerm.1}} are following: </p>
+            <br>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Major</th>
+                        <th>Credit Hours</th>
+                        <th>School</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course in coursesOffered %}
+                        <tr>
+                            <td>{{course.course_name}}</td>
+                            <td>{{course.major_name}}</td>
+                            <td>{{course.credit_hours}}</td>
+                            <td>{{course.school}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div></div>
+        {% endif %}
+    </div>
+{% endblock content %}

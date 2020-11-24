@@ -88,16 +88,6 @@ def getAllCourses():
         for row in c.fetchall()
     ]
 
-def getPreReq(course_id):
-    c = connection.cursor()
-    c.execute("SELECT courses.name from prereqs inner join courses on prereqs.prereq_id = courses.course_id where prereqs.course_id = %s", [course_id])
-    # row = c.fetchall()
-    columns = [col[0] for col in c.description]
-    return [
-        dict(zip(columns, row))
-        for row in c.fetchall()
-    ]
-
 def getCourseName(course_id):
     c = connection.cursor()
     c.execute("SELECT courses.name from courses where courses.course_id = %s", [course_id])
@@ -108,4 +98,114 @@ def getCourseName(course_id):
         for row in c.fetchall()
     ]    
 
- 
+def getPreReq(course_id):
+    c = connection.cursor()
+    c.execute("SELECT courses.name from prereqs inner join courses on prereqs.prereq_id = courses.course_id where prereqs.course_id = %s", [course_id])
+    # row = c.fetchall()
+    columns = [col[0] for col in c.description]
+    return [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]
+
+def getAntiReq(course_id):
+    c = connection.cursor()
+    c.execute("SELECT courses.name from antireqs inner join courses on antireqs.antireq_id = courses.course_id where antireqs.course_id = %s", [course_id])
+    c.execute("SELECT courses.name from antireqs inner join courses on antireqs.course_id = courses.course_id where antireqs.antireq_id = %s", [course_id])
+    # row = c.fetchall()
+    columns = [col[0] for col in c.description]
+    return [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]
+
+def getCoursesInASemester(selectedSemesterTerm, selectedSemesterYear):
+    c = connection.cursor()
+    c.execute("SELECT courses.name as course_name, Major.name as major_name, courses.school, courses.credit_hours from courses inner join Major ON courses.major = Major.id where lower(courses.semester) = %s AND courses.year = %s",[selectedSemesterTerm, selectedSemesterYear])
+    # row = c.fetchall()
+    columns = [col[0] for col in c.description]
+    return [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]
+
+def getAdvisor(roll_number):
+    c = connection.cursor()
+    c.execute("SELECT instructor.name, instructor.department, instructor.school FROM instructor INNER JOIN advisor ON advisor.instructor_id = instructor.instructor_id where advisor.roll_number = %s",[roll_number])
+    # row = c.fetchall()
+    columns = [col[0] for col in c.description]
+    return [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]
+
+def getAllInstructors():
+    c = connection.cursor()
+    c.execute("SELECT instructor.name, instructor.department, instructor.school, instructor.rating, instructor.instructor_id from instructor")
+    # row = c.fetchall()
+    columns = [col[0] for col in c.description]
+    return [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]
+
+def getCoursesOfferedByInstructor(instructor_id):
+    c = connection.cursor()
+    c.execute("SELECT courses.name as course_name, courses.school, Major.name as major_name, courses.credit_hours, courses.semester, courses.year from courses INNER JOIN Major ON courses.major = Major.id where courses.instructor = %s",[instructor_id])
+    # row = c.fetchall()
+    columns = [col[0] for col in c.description]
+    return [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]
+
+def getInstructorName(instructor_id):
+    c = connection.cursor()
+    c.execute("SELECT instructor.name from instructor where instructor_id = %s",[instructor_id])
+    # row = c.fetchall()
+    columns = [col[0] for col in c.description]
+    return [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]
+
+def getInstructorsRatings():
+    c = connection.cursor()
+    c.execute("SELECT instructor.name, instructor.rating from instructor")
+    # row = c.fetchall()
+    columns = [col[0] for col in c.description]
+    return [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]
+
+def getAllMajors():
+    c = connection.cursor()
+    c.execute("SELECT Major.name, Major.id from Major")
+    # row = c.fetchall()
+    columns = [col[0] for col in c.description]
+    return [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]
+
+def getCoursesOfAMajor(major_id):
+    c = connection.cursor()
+    c.execute("SELECT courses.name as course_name, courses.school, Major.name as major_name, courses.credit_hours, courses.semester, courses.year from courses INNER JOIN Major ON courses.major = Major.id where courses.major = %s",[major_id])
+    # row = c.fetchall()
+    columns = [col[0] for col in c.description]
+    return [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]
+
+def getMajorName(major_id):
+    c = connection.cursor()
+    c.execute("Select Major.name from Major where Major.id = %s",[major_id])
+    # row = c.fetchall()
+    columns = [col[0] for col in c.description]
+    return [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]
+

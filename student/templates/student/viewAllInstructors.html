@@ -1,0 +1,29 @@
+{% extends 'student/base.html' %}
+{% block content %}
+    <div style="margin-top: 50px">
+        {% if allInstructors %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Instructor Name</th>
+                        <th>Instructor Department</th>
+                        <th>Instructor School</th>
+                        <th>Rating out of 10</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for instructor in allInstructors %}
+                        <tr>
+                            <td>{{instructor.name}}</td>
+                            <td>{{instructor.department}}</td>
+                            <td>{{instructor.school}}</td>
+                            <td>{{instructor.rating}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div>There are no instructors to show list for.</div>
+        {% endif %}
+    </div>
+{% endblock content %}
