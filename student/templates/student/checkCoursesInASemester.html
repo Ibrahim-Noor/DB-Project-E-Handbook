@@ -1,4 +1,4 @@
-{% extends 'student/base.html' %}
+{% extends 'index/base.html' %}
 {% block content %}
     <div style="margin-top: 50px">
         <form method="POST" action = "">
@@ -10,7 +10,7 @@
                 <option value="spring">Spring</option>
             </select>
             <br>
-            <label for="year">Choose semester Term</label>
+            <label for="year">Choose semester Year</label>
             <select type="text" id="year" name="semesterYear">
                 {% for i in yearList %}
                     <option value="{{i}}">{{i}}</option>

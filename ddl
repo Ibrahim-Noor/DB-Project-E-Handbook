@@ -35,7 +35,7 @@ CREATE TABLE `courses` (
  `credit_hours` int(11) NOT NULL,
  PRIMARY KEY (`course_id`),
  FOREIGN KEY (`major`) REFERENCES `Major` (`id`),
- FOREIGN KEY (`instructor`) REFERENCES `instructor` (`instructor_id`)
+ FOREIGN KEY (`instructor`) REFERENCES `instructor` (`instructor_id`) ON DELETE SET NULL
 )
 
 CREATE TABLE `minor_courses` (

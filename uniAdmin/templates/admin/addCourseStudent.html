@@ -1,0 +1,41 @@
+{% extends "index/base.html" %}
+
+{% block content %}
+    <form method="POST" action = "">
+    {% csrf_token %}
+        <div class="form-group mt-6">
+            <p style="color:red;">{{update}}</p>
+            <label for="studentRollNumber">Student Roll Number</label>
+            <input type="text" id="studentRollNumber" class="form-control" name="rollNumber" required>
+            <br>
+            <br>
+            <label for="courseSelect">Choose Course</label>
+            <select type="text" id="courseSelect" name="course">
+                {% for course in allCourses %}
+                    <option value="{{course.course_id}}">{{course.name}}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <label for="courseGPA">GPA</label>
+            <input type="text" id="courseGPA" class="form-control" name="GPA" required>
+            <br>
+            <br>
+            <label for="semester">Semester course taken</label>
+            <select type="text" id="semester" name="semester">
+                <option value="fall">Fall</option>
+                <option value="spring">Spring</option>
+                <option value="summer">Summer</option>
+            </select>
+            <br>
+            <br>
+            <label for="year">Choose semester Year</label>
+            <select type="text" id="year" name="semesterYear">
+                {% for i in yearList %}
+                    <option value="{{i}}">{{i}}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <input type="submit" value="Submit!"/>
+        </div>
+    </form>
+{% endblock content %}

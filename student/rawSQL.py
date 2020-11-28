@@ -12,7 +12,7 @@ def returnStudent(roll_number):
 
 def getCoursesTaken(roll_number):
     c = connection.cursor()
-    c.execute("SELECT courses.name, student_course_info.course_gpa, student_course_info.semester, student_course_info.year from student_course_info inner join courses ON student_course_info.course_id = courses.course_id where roll_number = %s ORDER BY student_course_info.year ",[roll_number])
+    c.execute("SELECT student_course_info.course_id, courses.name, student_course_info.course_gpa, student_course_info.semester, student_course_info.year from student_course_info inner join courses ON student_course_info.course_id = courses.course_id where roll_number = %s ORDER BY student_course_info.year ",[roll_number])
     # row = c.fetchall()
     columns = [col[0] for col in c.description]
     return [
@@ -209,3 +209,13 @@ def getMajorName(major_id):
         for row in c.fetchall()
     ]
 
+
+def getAllStudents():
+    c = connection.cursor()
+    c.execute("Select students.roll_number, students.full_name from students")
+    # row = c.fetchall()
+    columns = [col[0] for col in c.description]
+    return [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]

@@ -1,0 +1,31 @@
+{% extends "index/base.html" %}
+
+{% block content %}
+    <form method="POST" action = "">
+    {% csrf_token %}
+        <div class="form-group mt-6">
+            <p style="color:red;">{{update}}</p>
+            <label for="insID">Instructor ID: </label>
+            <input type="text" id="insID" class="form-control" name="instructorID" required>
+            <br>
+            <br>
+            <label for="name">Name: </label>
+            <input type="text" id="name" class="form-control" name="name" required>
+            <br>
+            <br>
+            <label for="department">Department: </label>
+            <input type="text" id="department" class="form-control" name="department" required>
+            <br>
+            <br>
+            <label for="rating">Rating: </label>
+            <input type="text" id="rating" class="form-control" name="rating" required>
+            <br>
+            <br>
+            <label for="school">School: </label>
+            <input type="text" id="school" class="form-control" name="school" required>
+            <br>
+            <br>
+            <input type="submit" value="Submit!"/>
+        </div>
+    </form>
+{% endblock content %}
