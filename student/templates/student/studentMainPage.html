@@ -5,16 +5,68 @@
 
 
 {% block content %}
-    <ul class="mainPageList" style="list-style:none;">
-        <li><a href="{% url 'coursesTaken' %}">Your Courses</a></li>
-        <li><a href="{% url 'coursesRequired' %}">Required Courses</a></li>
-        <li><a href="{% url 'checkPreReq' %}">Check Pre-Requisites for a course</a></li>
-        <li><a href="{% url 'checkAntiReq' %}">Check Anti-Requisites for a course</a></li>
-        <li><a href="{% url 'checkCoursesInASemester' %}">See courses offered in a particular semester</a></li>
-        <li><a href="{% url 'checkAdvisor' %}">Check Your advisor</a></li>
-        <li><a href="{% url 'viewCoursesByInstructor' %}">View Courses By Instructor</a></li>
-        <li><a href="{% url 'viewInstructorsRatings' %}">View Ratings of Instructors</a></li>
-        <li><a href="{% url 'viewCoursesMajorWise' %}">View Courses of a Major</a></li>
-        <li><a href="{% url 'viewAllInstructors' %}">View All Instructors</a></li>
-    </ul>
+
+<div style="margin-top:10px;">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-info btn-block" href="{% url 'coursesTaken' %}">Your Courses</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-warning btn-block" href="{% url 'coursesRequired' %}">Required Courses</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-primary btn-block" href="{% url 'checkPreReq' %}">Check Pre-Requisites for a course</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-danger btn-block" href="{% url 'checkAntiReq' %}">Check Anti-Requisites for a course</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-success btn-block" href="{% url 'checkCoursesInASemester' %}">See courses offered in a particular semester</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-secondary btn-block" href="{% url 'checkAdvisor' %}">Check Your advisor</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-dark btn-block" href="{% url 'viewCoursesByInstructor' %}">View Courses By Instructor</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-outline-warning btn-block" href="{% url 'viewInstructorsRatings' %}">View Ratings of Instructors</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-success btn-block" href="{% url 'viewCoursesMajorWise' %}">View Courses of a Major</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-outline-secondary btn-block" href="{% url 'viewAllInstructors' %}">View All Instructors</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+</div>
+
 {% endblock content %}

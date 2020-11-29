@@ -1,0 +1,47 @@
+{% extends 'index/base.html' %}
+
+{% block content %}
+    <p style="color:red;">{{update}}</p>
+    <form method="POST" action = "" >
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="rn">Roll Number</label>
+                <input type="text" class="form-control" id="rn" placeholder="Roll Number" name="rollNumber" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Full Name" name="name" required>
+            </div>
+            
+        </div>
+        <br><br>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="gY">Graduation Year</label>
+                <input type="text" class="form-control" id="gY" name="gy" placeholder="graduation year" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="cgpa">CGPA</label>
+                <input type="text" class="form-control" id="cgpa" name="cgpa" placeholder="cgpa" required>
+            </div>
+        </div>
+        <br><br>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="chTaken">Credit Hours Taken</label>
+                <input type="text" class="form-control" id="chTaken" placeholder="credit hours taken" name="chTaken" required>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="major">Major</label>
+                <select type="text" id="major" name="major" class="form-control" required>
+                    {% for major in majors %}
+                        <option value="{{major.id}}">{{major.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <br><br><br>
+        <input type="submit" class="btn btn-primary btn-block" value="Submit!"/>
+    </form>
+{% endblock content %}

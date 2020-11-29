@@ -1,12 +1,53 @@
 {% extends 'index/base.html' %}
 {% block content %}
-<div>
-    <ul>
-        <li><a href="{% url 'addCourseStudent' %}">Add course to student</li>
-        <li><a href="{% url 'removeCourseStudentHelper' %}">Remove student course</li>
-        <li><a href="{% url 'addInstructor' %}">Add Instructor</li>
-        <li><a href="{% url 'removeInstructor' %}">Remove Instructor</li>
-        <li>dasasds</li>
-    </ul>
+<div style="margin-top:10px;">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-info btn-block" href="{% url 'addCourseStudent' %}">Add course to student</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-warning btn-block" href="{% url 'removeCourseStudentHelper' %}">Remove student course</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-primary btn-block" href="{% url 'addInstructor' %}">Add Instructor</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-danger btn-block" href="{% url 'removeInstructor' %}">Remove Instructor</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-success btn-block" href="{% url 'addCourseOffering' %}">Add a course to the offerings</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-secondary btn-block" href="{% url 'removeCourseOffering' %}">Remove a course from the offerings</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-dark btn-block" href="{% url 'updateInstructorRating' %}">Update instructor rating</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6" align="center"><a class="btn btn-secondary btn-block" href="{% url 'addStudent' %}">Add Student</a></div>
+        <div class="col"></div>
+    </div>
+    <br><br>
 </div>
 {% endblock content %}

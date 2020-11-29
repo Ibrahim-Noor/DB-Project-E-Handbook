@@ -1,0 +1,27 @@
+{% extends "index/base.html" %}
+
+{% block content %}
+    <div>
+        <p style="color:red;">{{update}}</p>
+        {% if allInstructors %}
+            <form method="POST" action = "">
+            {% csrf_token %}
+                <div class="form-group mt-6">
+                    <label for="instructorSelect">Choose Instructor</label>
+                    <select type="text" id="instructorSelect" name="instructor" required>
+                        {% for instructor in allInstructors %}
+                            <option value="{{instructor.instructor_id}}">{{instructor.name}}-{{instructor.instructor_id}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+                    <label for="rating">Rating</label>
+                    <input type="text" id="rating" name="rating">
+                    <br><br>
+                    <input type="submit" value="Update!"/>
+                </div>
+            </form>
+        {% else %}
+            <p>This student does not have any courses</p>
+        {% endif %}
+    </div>
+{% endblock content %}

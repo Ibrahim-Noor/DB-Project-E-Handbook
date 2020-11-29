@@ -1,0 +1,24 @@
+{% extends "index/base.html" %}
+
+{% block content %}    
+    <div>
+        <p style="color:red;">{{update}}</p>
+        {% if allCourses %}
+            <form method="POST" action = "">
+            {% csrf_token %}
+                <div class="form-group mt-6">
+                    <label for="course">Choose Course to delete</label>
+                    <select type="text" id="course" name="course">
+                        {% for course in allCourses %}
+                            <option value="{{course.course_id}}">{{course.name}}</option>
+                        {% endfor %}
+                    </select>
+                    <br><br>
+                    <input type="submit" value="Submit!"/>
+                </div>
+            </form>
+        {% else %}
+            <p>This student does not have any courses</p>
+        {% endif %}
+    </div>
+{% endblock content %}

@@ -22,6 +22,7 @@ def adminLoginView(request):
             if roll_number == 'admin' and password == 'admin':
                 request.session.flush()
                 request.session['admin'] = 'admin'
+                print(request.session.keys())
                 return redirect('adminMainPage')
         context['error'] = "Invalid Credentials"
     context['form'] = adminLoginForm()
@@ -82,7 +83,7 @@ def removeCourseStudentView(request):
     if request.method == "POST":
         studentRollNumber = request.POST.get('rollNumber')
         course = request.POST.get('course')
-        result = removeCourse(studentRollNumber, course)
+        result = removeCourseOfStudent(studentRollNumber, course)
         context["update"] = result
         cousesTakenByStudent = getCoursesTaken(studentRollNumber)
         context["rollNumber"] = studentRollNumber
@@ -121,3 +122,79 @@ def removeInstructorView(request):
         context['allInstructors'] = allInstructors
         context["update"] = result
         return render(request, 'admin/removeInstructor.html', context)
+
+@isLoggedIn
+@isAdmin
+def addCourseOfferingView(request):
+    context = {}
+    majors = getAllMajors()
+    instructors = getAllInstructors()
+    context['majors'] = majors
+    context['instructors'] = instructors
+    if request.method == "GET":
+        return render(request, 'admin/addCourseOffering.html', context)
+    if request.method == "POST":
+        c_id = request.POST.get('courseID')
+        name = request.POST.get('name')
+        school = request.POST.get('school')
+        major = request.POST.get('major')
+        instructor = request.POST.get('instructor')
+        courseCap = request.POST.get('courseCap')
+        semester = request.POST.get('semester')
+        year = request.POST.get('year')
+        creditHours = request.POST.get("creditHours")
+        result = addCourse(c_id, name, school, major, instructor, courseCap, semester, year, creditHours)
+        context["update"] = result
+        return render(request, 'admin/addCourseOffering.html', context)
+
+@isLoggedIn
+@isAdmin
+def removeCourseOfferingView(request):
+    context = {}
+    if request.method == 'GET':
+        allCourses = getAllCourses()
+        context['allCourses'] = allCourses
+        return render(request, 'admin/removeCourseOffering.html', context)
+    if request.method == "POST":
+        c_id = request.POST.get('course')
+        print("sad", c_id)
+        result = removeCourseOffering(c_id)
+        context["update"] = result
+        allCourses = getAllCourses()
+        context['allCourses'] = allCourses
+        return render(request, 'admin/removeCourseOffering.html', context)
+
+@isLoggedIn
+@isAdmin
+def updateInstructorRatingView(request):
+    context = {}
+    allInstructors = getAllInstructors()
+    context['allInstructors'] = allInstructors
+    if request.method == 'GET':
+        return render(request, 'admin/updateInstructorRating.html', context)
+    if request.method == 'POST':
+        instructor = request.POST.get("instructor")
+        rating = request.POST.get('rating')
+        result = updateInstructorRating(instructor, rating)
+        context['update'] = result
+        return render(request, 'admin/updateInstructorRating.html', context)
+
+@isLoggedIn
+@isAdmin
+def addStudentView(request):
+    context = {}
+    majors = getAllMajors()
+    context['majors'] = majors
+    if request.method == "GET":
+        return render(request, 'admin/addStudent.html', context)
+    if request.method == "POST":
+        rn = request.POST.get('rollNumber')
+        name = request.POST.get('name')
+        gradYear = request.POST.get('gy')
+        cgpa = request.POST.get('cgpa')
+        chTaken = request.POST.get('chTaken')
+        major = request.POST.get('major')
+        result = addStudent(rn, name, gradYear, cgpa, chTaken, major)
+        context['update'] = result
+        return render(request, 'admin/addStudent.html', context)
+        
