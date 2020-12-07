@@ -1,16 +1,17 @@
 {% extends "index/base.html" %}
 
 {% block content %}
-    <form method="POST" action = "">
-    {% csrf_token %}
-        <div class="form-group mt-6">
-            <p style="color:red;">{{update}}</p>
-            <label for="studentRollNumber">Student Roll Number</label>
-            <input type="text" id="studentRollNumber" class="form-control" name="rollNumber" required>
-            <br>
-            <br>
-            <input type="submit" value="Submit!"/>
-        </div>
-    </form>
-    
+    <div>
+        <p style="color:red;">{{update}}</p>
+        <form method="POST" action = "">
+        {% csrf_token %}
+            <div class="form-group mt-6">
+                <label for="studentRollNumber">Student Roll Number</label>
+                <input type="text" id="studentRollNumber" class="form-control" name="rollNumber" required>
+                <br>
+                <br>
+                <input type="submit" value="Submit!"/>
+            </div>
+        </form>
+    </div>
 {% endblock content %}

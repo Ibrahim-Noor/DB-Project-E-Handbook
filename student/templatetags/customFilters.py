@@ -4,4 +4,7 @@ register = template.Library()
 
 @register.filter(name='sub')
 def cut(value, arg):
-    return abs(value-arg)
+    try:
+        return abs(value-arg)
+    except: 
+        return 0

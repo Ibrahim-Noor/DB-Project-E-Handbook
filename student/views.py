@@ -51,14 +51,12 @@ def coursesRequiredView(request):
     creditHoursInfo = getCreditHoursInformation(roll_number)
     context["creditHoursInfo"] = creditHoursInfo[0]
     nonMajorNotTakenCourses = getNonMajorNotTakenCourses(roll_number)
-    # print(nonMajorNotTakenCourses)
     context["nonMajorNotTakenCourses"] = nonMajorNotTakenCourses
     majorCoresNotTakenCourses = getMajorCoresNotTakenCourses(roll_number)
     context["majorCoresNotTakenCourses"] = majorCoresNotTakenCourses
     majorNotTakenCourses = getMajorNotTakenCourses(roll_number)
     majorNotTakenCoursesNotInMajorCores = [course for course in majorNotTakenCourses if course not in majorCoresNotTakenCourses]
     context["majorNotTakenCourses"] = majorNotTakenCoursesNotInMajorCores
-    print(context)
     return render(request, 'student/coursesRequired.html', context)
 # SELECT SUM(courses.credit_hours) as total_credits, Major.req_ch from student_course_info INNER JOIN courses on student_course_info.course_id = courses.course_id INNER JOIN students on student_course_info.roll_number = students.roll_number INNER JOIN Major on students.major = Major.id WHERE student_course_info.roll_number = 21100192
 
@@ -74,8 +72,8 @@ def checkPreReqView(request):
         selectedValue = request.POST.get('course')
         preReqs = getPreReq(selectedValue)
         courseName = getCourseName(selectedValue)
-        if preqReqs:
-            context['queryCourse'] = courseName[0]
+        context['queryCourse'] = courseName[0]
+        if preReqs:
             context['preReqs'] =preReqs
         else:
             context['preReqs'] = [{"name":"The course does not have any prereq"}]
@@ -93,11 +91,11 @@ def checkAntiReqView(request):
         selectedValue = request.POST.get('course')
         antiReqs = getAntiReq(selectedValue)
         courseName = getCourseName(selectedValue)
+        context['queryCourse'] = courseName[0]
         if antiReqs:
-            context['queryCourse'] = courseName[0]
             context['antiReqs'] = antiReqs
         else:
-            context['preReqs'] = [{"name":"The course does not have any antireq"}]
+            context['antiReqs'] = [{"name":"The course does not have any antireq"}]
         return render(request, 'student/checkAntiReq.html', context)
 
 @isLoggedIn
@@ -133,7 +131,7 @@ def viewCoursesMajorWiseView(request):
             context['selectedMajor'] = majorName[0]
             context['coursesOffered'] = coursesOfAMajor
         else:
-            context['error'] = "This {} does not have any course registered under its name".format(majorName[0])
+            context['error'] = "This major, {} does not have any course registered under its name".format(majorName[0]['name'])
         return render(request, 'student/viewCoursesMajorWise.html', context)
 
 

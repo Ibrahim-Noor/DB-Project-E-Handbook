@@ -64,14 +64,17 @@ def addCourseStudentView(request):
 @isAdmin
 def removeCourseStudentHelperView(request):
     context = {}
-    if request.method == "GET":
-        return render(request, 'admin/removeCourseStudentHelper.html', context)
     if request.method == "POST":
         studentRollNumber = request.POST.get('rollNumber')
-        cousesTakenByStudent = getCoursesTaken(studentRollNumber)
-        context["rollNumber"] = studentRollNumber
-        context["allCourses"] = cousesTakenByStudent
-        return render(request, 'admin/removeCourseStudent.html', context)
+        try:
+            int(studentRollNumber)
+            coursesTakenByStudent = getCoursesTaken(studentRollNumber)
+            context["rollNumber"] = studentRollNumber
+            context["allCourses"] = coursesTakenByStudent
+            return render(request, 'admin/removeCourseStudent.html', context)
+        except:
+            context['update'] = "Invalid roll number"
+    return render(request, 'admin/removeCourseStudentHelper.html', context)
 
 
 @isLoggedIn
@@ -88,6 +91,7 @@ def removeCourseStudentView(request):
         cousesTakenByStudent = getCoursesTaken(studentRollNumber)
         context["rollNumber"] = studentRollNumber
         context["allCourses"] = cousesTakenByStudent
+
         return render(request, 'admin/removeCourseStudent.html', context)
 
 @isLoggedIn
