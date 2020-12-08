@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'index/base.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'base.css' %}"> {% endcomment %}
     {% comment %} <link rel="stylesheet" href="{% static 'student/mainPage.css' %}"> {% endcomment %}
     <title>E-HandBBook</title>
 </head>
-<body>
+<body style="padding:0; margin:0;">
     <div class="container">
         {% include 'index/snippets/navbar.html' %}
         {% block content %}
