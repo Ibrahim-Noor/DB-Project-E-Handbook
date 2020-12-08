@@ -46,7 +46,8 @@ def addCourseStudentView(request):
     # allStudents = getAllStudents()
     # context['allStudents'] = allStudents
     now = datetime.datetime.now()
-    context["yearList"] = range(now.year - 10, now.year)
+    print(now.year)
+    context["yearList"] = range(now.year - 10, now.year + 1)
     if request.method == "GET":
         return render(request, 'admin/addCourseStudent.html', context)
     if request.method == "POST":
