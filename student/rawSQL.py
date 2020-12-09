@@ -105,13 +105,19 @@ def getPreReq(course_id):
 def getAntiReq(course_id):
     c = connection.cursor()
     c.execute("SELECT courses.name from antireqs inner join courses on antireqs.antireq_id = courses.course_id where antireqs.course_id = %s", [course_id])
-    c.execute("SELECT courses.name from antireqs inner join courses on antireqs.course_id = courses.course_id where antireqs.antireq_id = %s", [course_id])
-    # row = c.fetchall()
     columns = [col[0] for col in c.description]
-    return [
+    result1 = [
         dict(zip(columns, row))
         for row in c.fetchall()
     ]
+    c.execute("SELECT courses.name from antireqs inner join courses on antireqs.course_id = courses.course_id where antireqs.antireq_id = %s", [course_id])
+    columns = [col[0] for col in c.description]
+    result2 = [
+        dict(zip(columns, row))
+        for row in c.fetchall()
+    ]
+    return result1 + result2
+    # row = c.fetchall()
 
 def getCoursesInASemester(selectedSemesterTerm, selectedSemesterYear):
     c = connection.cursor()
