@@ -22,9 +22,9 @@
                         <th>Course Name</th>
                         <th>Major</th>
                         <th>Credit Hours</th>
-                        <th>School</th>
-                        <th>Semester</th>
-                        <th>Year</th>
+                        {% comment %} <th>School</th> {% endcomment %}
+                        {% comment %} <th>Semester</th> {% endcomment %}
+                        {% comment %} <th>Year</th> {% endcomment %}
                     </tr>
                 </thead>
                 <tbody>
@@ -33,9 +33,9 @@
                             <td>{{course.course_name}}</td>
                             <td>{{course.major_name}}</td>
                             <td>{{course.credit_hours}}</td>
-                            <td>{{course.school}}</td>
-                            <td>{{course.semester}}</td>
-                            <td>{{course.year}}</td>
+                            {% comment %} <td>{{course.school}}</td> {% endcomment %}
+                            {% comment %} <td>{{course.semester}}</td> {% endcomment %}
+                            {% comment %} <td>{{course.year}}</td> {% endcomment %}
                         </tr>
                     {% endfor %}
                 </tbody>

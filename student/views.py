@@ -49,6 +49,7 @@ def coursesRequiredView(request):
     context = {}
     roll_number = request.session['student_id']
     creditHoursInfo = getCreditHoursInformation(roll_number)
+    print(creditHoursInfo)
     context["creditHoursInfo"] = creditHoursInfo[0]
     nonMajorNotTakenCourses = getNonMajorNotTakenCourses(roll_number)
     context["nonMajorNotTakenCourses"] = nonMajorNotTakenCourses
