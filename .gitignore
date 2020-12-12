@@ -1,2 +1,3 @@
 env/
 .dbentries.py
+.connectSQL/settins.py
