@@ -163,6 +163,7 @@ import names
 from RandomWordGenerator import RandomWord
 
 conn = c.connect(host="remotemysql.com", port="3306", user="DapokUse1q", password="CBAcV2ngg5", database="DapokUse1q")
+# conn = c.connect(host="localhost", port="3306", user="root", password="", database="djangoRawSQL")
 cursor = conn.cursor()
 
 '''
@@ -360,7 +361,7 @@ CREATE TABLE `Major` (
 #             cursor.execute('INSERT INTO major_cores(id,course_id,name,major) VALUES(%s,%s,%s,%s)',(course_id,course_id,name,major))
 #             #print('INSERT INTO major_cores(id,course_id,name,major) VALUES({}, {} , {}, {})'.format(course_id,course_id,name,major))
     
-#     if 2999 < i < 6000:
+#     elif 2999 < i < 6000:
 #         course_id = 111111+i
 #         name = rw.generate()
 #         school = 'HSS'
@@ -380,7 +381,7 @@ CREATE TABLE `Major` (
     
         
         
-#     if 5999 < i < 8000:
+#     elif 5999 < i < 8000:
 #         course_id = 111111+i
 #         name = rw.generate()
 #         school = 'SDSB'
@@ -399,7 +400,7 @@ CREATE TABLE `Major` (
     
         
     
-#     if 7999 < i < 10000:
+#     elif 7999 < i < 10000:
             
 #         course_id = 111111+i
 #         name = rw.generate()
@@ -416,97 +417,97 @@ CREATE TABLE `Major` (
 #         if ((random.randint(0,10000) % 13) == 0 ):
 #             cursor.execute('INSERT INTO major_cores(id,course_id,name,major) VALUES(%s,%s,%s,%s)',(course_id,course_id,name,major))
 #             #print('INSERT INTO major_cores(id,course_id,name,major) VALUES({}, {} , {}, {})'.format(course_id,course_id,name,major))
+# conn.commit()
+# print("courses", "major cores")
+# # '''
+# # CREATE TABLE `minor_courses` (
+# #  `id` int(11) NOT NULL AUTO_INCREMENT,
+# #  `minor` int(11) NOT NULL,
+# #  `course_id` int(11) DEFAULT NULL,
+# #  PRIMARY KEY (`id`),
+# #  FOREIGN KEY (`minor`) REFERENCES `minor` (`id`) ON DELETE CASCADE,
+# #  FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`) ON DELETE SET NULL
+# # ) 
 
+# # '''
 
-# '''
-# CREATE TABLE `minor_courses` (
-#  `id` int(11) NOT NULL AUTO_INCREMENT,
-#  `minor` int(11) NOT NULL,
-#  `course_id` int(11) DEFAULT NULL,
-#  PRIMARY KEY (`id`),
-#  FOREIGN KEY (`minor`) REFERENCES `minor` (`id`) ON DELETE CASCADE,
-#  FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`) ON DELETE SET NULL
-# ) 
+# rw = RandomWord()
+# rw.generate()
 
-# '''
+# SSE_majors = [3550, 3551, 3552, 3553, 3554]
+# HSS_majors = [3557, 3558, 3559, 3560]
+# SDSB_majors = [3555, 3556]
+# LAW_majors = [3561]
 
-rw = RandomWord()
-rw.generate()
+# for i in range(10000):
 
-SSE_majors = [3550, 3551, 3552, 3553, 3554]
-HSS_majors = [3557, 3558, 3559, 3560]
-SDSB_majors = [3555, 3556]
-LAW_majors = [3561]
+#     if i < 3000:
+#         course_id = 111111+i
+#         minor = random.choice(SSE_majors)
 
-for i in range(10000):
+#         cursor.execute('INSERT INTO minor_courses(id,minor,course_id ) VALUES(%s,%s,%s)',(course_id,minor,course_id))
+#         #print('INSERT INTO minor_courses(id,minor,course_id ) VALUES({}, {} , {})'.format(course_id,minor,course_id))
 
-    if i < 3000:
-        course_id = 111111+i
-        minor = random.choice(SSE_majors)
-
-        cursor.execute('INSERT INTO minor_courses(id,minor,course_id ) VALUES(%s,%s,%s)',(course_id,minor,course_id))
-        #print('INSERT INTO minor_courses(id,minor,course_id ) VALUES({}, {} , {})'.format(course_id,minor,course_id))
-
-    if 2999 < i < 6000:
-        course_id = 111111+i
-        minor = random.choice(HSS_majors)
+#     elif 2999 < i < 6000:
+#         course_id = 111111+i
+#         minor = random.choice(HSS_majors)
         
-        cursor.execute('INSERT INTO minor_courses(id,minor,course_id ) VALUES(%s,%s,%s)',(course_id,minor,course_id))
-        #print('INSERT INTO minor_courses(id,minor,course_id ) VALUES({}, {} , {})'.format(course_id,minor,course_id))
+#         cursor.execute('INSERT INTO minor_courses(id,minor,course_id ) VALUES(%s,%s,%s)',(course_id,minor,course_id))
+#         #print('INSERT INTO minor_courses(id,minor,course_id ) VALUES({}, {} , {})'.format(course_id,minor,course_id))
 
-    if 5999 < i < 8000:
-        course_id = 111111+i
-        minor = random.choice(SDSB_majors)
+#     elif 5999 < i < 8000:
+#         course_id = 111111+i
+#         minor = random.choice(SDSB_majors)
         
-        cursor.execute('INSERT INTO minor_courses(id,minor,course_id ) VALUES(%s,%s,%s)',(course_id,minor,course_id))
-        #print('INSERT INTO minor_courses(id,minor,course_id ) VALUES({}, {} , {})'.format(course_id,minor,course_id))
+#         cursor.execute('INSERT INTO minor_courses(id,minor,course_id ) VALUES(%s,%s,%s)',(course_id,minor,course_id))
+#         #print('INSERT INTO minor_courses(id,minor,course_id ) VALUES({}, {} , {})'.format(course_id,minor,course_id))
 
     
-    if 7999 < i < 10000:
+#     elif 7999 < i < 10000:
             
-        course_id = 111111+i
-        minor = random.choice(LAW_majors)
+#         course_id = 111111+i
+#         minor = random.choice(LAW_majors)
         
-        cursor.execute('INSERT INTO minor_courses(id,minor,course_id ) VALUES(%s,%s,%s)',(course_id,minor,course_id))
-##print('INSERT INTO minor_courses(id,minor,course_id ) VALUES({}, {} , {})'.format(course_id,minor,course_id))
+#         cursor.execute('INSERT INTO minor_courses(id,minor,course_id ) VALUES(%s,%s,%s)',(course_id,minor,course_id))
+# ##print('INSERT INTO minor_courses(id,minor,course_id ) VALUES({}, {} , {})'.format(course_id,minor,course_id))
+# conn.commit()
+# print("minor courses")
+# # '''
+# # CREATE TABLE `prereqs` (
+# #  `course_id` int(11) NOT NULL,
+# #  `prereq_id` int(11) NOT NULL,
+# #  PRIMARY KEY (`course_id`,`prereq_id`),
+# #  FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`) ON DELETE CASCADE,
+# #  FOREIGN KEY (`prereq_id`) REFERENCES `courses` (`course_id`) ON DELETE CASCADE
+# # ) 
+# # '''
 
-
-# '''
-# CREATE TABLE `prereqs` (
-#  `course_id` int(11) NOT NULL,
-#  `prereq_id` int(11) NOT NULL,
-#  PRIMARY KEY (`course_id`,`prereq_id`),
-#  FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`) ON DELETE CASCADE,
-#  FOREIGN KEY (`prereq_id`) REFERENCES `courses` (`course_id`) ON DELETE CASCADE
-# ) 
-# '''
-
-for i in range (1000):
+# for i in range (1000):
     
-    prereq_id =  111111 + i
-    course_id = 111111 + (5*(i+1))
+#     prereq_id =  111111 + i
+#     course_id = 111111 + (5*(i+1))
     
-    cursor.execute('INSERT INTO prereqs(course_id, prereq_id ) VALUES(%s, %s)',(course_id, prereq_id))
-    #print('INSERT INTO prereqs(course_id, prereq_id ) VALUES({}, {})'.format(course_id, prereq_id))
-
-
-# '''
-# CREATE TABLE `students` (
-#  `roll_number` int(11) NOT NULL,
-#  `full_name` varchar(50) NOT NULL,
-#  `grad_year` int(11) NOT NULL,
-#  `cgpa` float DEFAULT 0,
-#  `ch_taken` int(11) DEFAULT 0,
-#  `major` int(11) DEFAULT NULL,
-#  PRIMARY KEY (`roll_number`),
-#  FOREIGN KEY (`major`) REFERENCES `Major` (`id`)
-# ) 
-# '''
+#     cursor.execute('INSERT INTO prereqs(course_id, prereq_id ) VALUES(%s, %s)',(course_id, prereq_id))
+#     #print('INSERT INTO prereqs(course_id, prereq_id ) VALUES({}, {})'.format(course_id, prereq_id))
+# conn.commit()
+# print("prereqs")
+# # '''
+# # CREATE TABLE `students` (
+# #  `roll_number` int(11) NOT NULL,
+# #  `full_name` varchar(50) NOT NULL,
+# #  `grad_year` int(11) NOT NULL,
+# #  `cgpa` float DEFAULT 0,
+# #  `ch_taken` int(11) DEFAULT 0,
+# #  `major` int(11) DEFAULT NULL,
+# #  PRIMARY KEY (`roll_number`),
+# #  FOREIGN KEY (`major`) REFERENCES `Major` (`id`)
+# # ) 
+# # '''
 
 # majors = [3550, 3551, 3552, 3553, 3554 , 3557, 3558, 3559, 3560 , 3555, 3556 ,3561]
 
 
-# for i in range (50000):
+# for i in range (10000):
 #     roll_number = 21100000 + i
 #     full_name = names.get_full_name()
 #     grad_year = random.randint(2001, 2021)
@@ -520,7 +521,8 @@ for i in range (1000):
     
 #     cursor.execute('INSERT INTO students(roll_number,full_name, grad_year, cgpa, ch_taken, major) VALUES(%s,%s,%s,%s,%s,%s)',(roll_number,full_name, grad_year, cgpa, ch_taken, major))
 #     #print('INSERT INTO students(roll_number,full_name, grad_year, cgpa, ch_taken, major) VALUES({}, {} , {}, {} , {}, {})'.format(roll_number,full_name, grad_year, cgpa, ch_taken, major))
-
+# conn.commit()
+# print("students")
 # '''
 # CREATE TABLE `student_course_info` (
 #  `roll_number` int(11) NOT NULL,
@@ -534,18 +536,20 @@ for i in range (1000):
 # )
 # '''
 
-# for i in range (50000):
-#     roll_number = 21100000 + i
-#     x = random.randint(111111, 121069)
-#     y = random.randint(2001, 2020)
-#     for j in range (random.randint(2, 40)):
-#         course_id = x+j
-#         course_gpa = round(random.uniform(2, 4), 3)
-#         semester = random.choice(['fall','spring','summer'])
-#         year = y + random.randint(0, 3)
-#         cursor.execute('INSERT INTO student_course_info(roll_number,course_id, course_gpa, semester, year) VALUES(%s,%s,%s,%s,%s)',(roll_number,course_id, course_gpa, semester, year))
+for i in range (10000):
+    roll_number = 21100000 + i
+    x = random.randint(111111, 121069)
+    y = random.randint(2001, 2020)
+    rand = random.randint(2, 20)
+    for j in range (rand):
+        course_id = x+j
+        course_gpa = round(random.uniform(2, 4), 3)
+        semester = random.choice(['fall','spring','summer'])
+        year = y + random.randint(0, 3)
+        cursor.execute('INSERT INTO student_course_info(roll_number,course_id, course_gpa, semester, year) VALUES(%s,%s,%s,%s,%s)',(roll_number,course_id, course_gpa, semester, year))
         #print('INSERT INTO student_course_info(roll_number,course_id, course_gpa, semester, year) VALUES({}, {} , {}, {} , {})'.format(roll_number,course_id, course_gpa, semester, year))
-
+conn.commit()
+print("student course info")
 # '''
 # CREATE TABLE `advisor` (
 #  `roll_number` int(11) NOT NULL,
@@ -556,11 +560,12 @@ for i in range (1000):
 # )
 # '''
 
-# for i in range (50000):
+# for i in range (10000):
 #     roll_number = 21100000 + i 
 #     instructor_id = 511500 + (random.randint(0, 9999))
 #     cursor.execute('INSERT INTO advisor(roll_number,instructor_id) VALUES(%s,%s)',(roll_number,instructor_id))
-
+# conn.commit()
+# print("advisor")
 # '''
 # CREATE TABLE `antireqs` (
 #  `course_id` int(11) NOT NULL,
@@ -579,8 +584,9 @@ for i in range (1000):
 #         continue
     
 #     cursor.execute('INSERT INTO antireqs(course_id, antireq_id ) VALUES(%s, %s)',(course_id, antireq_id))
-    #print('INSERT INTO antireqs(course_id, antireq_id ) VALUES({}, {})'.format(course_id, antireq_id))
-
-conn.commit()
+#     #print('INSERT INTO antireqs(course_id, antireq_id ) VALUES({}, {})'.format(course_id, antireq_id))
+##conn.commit()
+# print("antireqs")
+# conn.commit()
 cursor.close()
 conn.close()
